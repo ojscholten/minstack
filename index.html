@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<style>
+		
+		body{
+			margin-top: 50px;
+
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-body">
+				<h1>minstack</h1>
+
+				<p>For a web app to be considered a DApp, it should interact with a blockchain in some way. To meet this requirement, this page interacts with the Ethereum blockchain using the Web3 javascript library injected by the MetaMask browser extension.</p>
+				
+			</div>
+
+		</div>
+
+
+		<div class="card mx-auto bg-dark text-white" style="width: 28rem; margin-top: 80px;">
+			<div class="card-body">
+				<h5>Connected Account:</h5>
+				<p id="connected_account">None</p>
+				
+			</div>
+		</div>
+
+		<form class="card mx-auto bg-dark text-white" style="width: 28rem; margin-top: 80px;">
+			<div class="card-body">
+			<h4>Create a Transaction</h4>
+			<p>This box lets you send funds to an address, using this UI and javascript rather than only MetaMask.</p>
+			<input class='input-group' type="text" name="target_address" placeholder="0x...">
+			<button class="btn btn-primary input-group">Send</button>
+			</div>
+		</form>
+
+	</div>
+
+	<script type="text/javascript">
+	
+	function connection_ready(accounts){
+		// show currently connected account
+		document.getElementById('connected_account').innerHTML = accounts[0]
+
+
+
+	}
+
+	async function loadWeb3(){
+		console.log('looking for Web3 in browser...')
+		if (window.ethereum){
+			window.web3 = new Web3(window.ethereum)
+			var accounts = await window.ethereum.request({method:'eth_requestAccounts'})
+			console.log('accounts requested! Ready to go.', accounts)
+			connection_ready(accounts)
+		}
+		else if (window.web3){
+			window.web3 = new Web3(window.web3.currentProvider)
+			console.log('found! Ready to go.')
+		}
+		else{
+			window.alert('Non-Ethereum browser detected!')
+		}
+	}
+
+	loadWeb3()
+
+
+	function sendFunds(){
+		// to create a transaction to a contract on the Ethereum network we need both the ABI and 
+		// address of the contract in question, from there we create a web3 contract object and call
+		// the methods we need.
+
+	}
+
+
+	</script>
+
+</body>
+</html>
