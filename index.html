@@ -9,45 +9,106 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 	<style>
-		
-		body{
-			margin-top: 50px;
 
-		}
 
 	</style>
 
 </head>
 <body>
 
-	<div class="container">
-		<div class="card">
-			<div class="card-body">
-				<h1>minstack</h1>
+	<div class="container-fluid bg-dark" style="padding: 80px 0;">
+		<div class="container" style="margin-bottom: 20px;">
+			<div class="row">
+				<div class="col-10 offset-1">
+					<div class="card mx-auto">
+						<div class="card-body">
+							<h1>minstack - a simple DApp</h1>
 
-				<p>For a web app to be considered a DApp, it should interact with a blockchain in some way. To meet this requirement, this page interacts with the Ethereum blockchain using the Web3 javascript library injected by the MetaMask browser extension.</p>
-				
-			</div>
-
-		</div>
-
-
-		<div class="card mx-auto bg-dark text-white" style="width: 28rem; margin-top: 80px;">
-			<div class="card-body">
-				<h5>Connected Account:</h5>
-				<p id="connected_account">None</p>
-				
+							<p>A lightweight DApp showcasing the basics of interacting with a blockchain, using the <a href="https://metamask.io/download.html">MetaMask extension</a> for the <a href="https://ethereum.org/en/">Ethereum network</a>. It lets you deposit and withdraw funds to this smart contract.</p>
+							
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<form class="card mx-auto bg-dark text-white" style="width: 28rem; margin-top: 80px;">
-			<div class="card-body">
-			<h4>Create a Transaction</h4>
-			<p>This box lets you send funds to an address, using this UI and javascript rather than only MetaMask.</p>
-			<input class='input-group' type="text" name="target_address" placeholder="0x...">
-			<button class="btn btn-primary input-group">Send</button>
+		<div class="container">
+			<div class="row">
+				<div class="col-10 offset-1">
+					<div class="row">
+						<div class="col-6">
+							<form class="card mx-auto">
+								<div class="card-body">
+									<h4>Deposit</h4>
+									<p>Send funds to be held in the contract.</p>
+									<div class="input-group mb-3">
+									  <input type="text" class="form-control" placeholder="0.1">
+				    					<span class="input-group-text">ETH</span>
+									  <div class="input-group-append">
+									    <button class="btn btn-primary" type="button" id="button-addon2">Send</button>
+									  </div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-6">
+
+							<form class="card mx-auto">
+								<div class="card-body">
+								<h4>Withdraw</h4>
+								<p>Receive all funds held in the contract.</p>
+									<div class="input-group mb-3">
+										<input type="text" class="form-control" placeholder="0">
+										<span class="input-group-text">ETH</span>
+
+									  <div class="input-group-append">
+											<button class="btn btn-primary input-group">Receive</button>
+									  </div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
-		</form>
+		</div>
+	</div>
+
+	<div class="container-fluid bg-light text-white" style="padding: 80px 0;">
+		<div class="container" style="margin-bottom: 20px;">
+			<div class="row">
+				<div class="col-10 offset-1 bg-dark card">
+					<div class="card-body">
+						<h1>How it works</h1>
+						<p>This simple DApp can send and receive funds from users addresses. To make this possible, the browser extension <a href="https://metamask.io/download.html">MetaMask</a> must be installed, which gives the scripts in this page access to the users cryptocurrency address, and the <a href="https://web3js.readthedocs.io/en/v1.2.11/">web3 javascript library</a>.</p>
+					</div>
+					<div class="card-body">
+						<h4>
+						<svg width="2em" height="2em"viewBox="0 0 16 16" class="bi bi-file-earmark-binary-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			  				<path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 2l.5-2.5 3 3L10 5a1 1 0 0 1-1-1zm-1.95 7.885c0 1.415-.548 2.206-1.524 2.206C4.548 14.09 4 13.3 4 11.885c0-1.412.548-2.203 1.526-2.203.976 0 1.524.79 1.524 2.203zm-1.524-1.612c-.542 0-.832.563-.832 1.612 0 .088.003.173.006.252l1.559-1.143c-.126-.474-.375-.72-.733-.72zm-.732 2.508c.126.472.372.718.732.718.54 0 .83-.563.83-1.614 0-.085-.003-.17-.006-.25l-1.556 1.146zm6.061.624V14h-3v-.595h1.181V10.5h-.05l-1.136.747v-.688l1.19-.786h.69v3.633h1.125z"/>
+						</svg>
+						Contract ABI
+						</h4>
+						<p>To send a transaction to a smart contract on the Ethereum network, we need to know its ABI so we know which method to call.</p>
+
+						<h4><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-medical-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 4.5a.5.5 0 0 0-1 0v.634l-.549-.317a.5.5 0 1 0-.5.866L7 6l-.549.317a.5.5 0 1 0 .5.866l.549-.317V7.5a.5.5 0 1 0 1 0v-.634l.549.317a.5.5 0 1 0 .5-.866L9 6l.549-.317a.5.5 0 1 0-.5-.866l-.549.317V4.5zM5.5 9a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+						</svg>
+						Contract Address
+						</h4>
+						<p>We also need to know the address of the smart contract we want to interact with.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="card mx-auto bg-dark text-white" style="width: 28rem; margin-top: 80px;">
+				<div class="card-body">
+					<h5>Connected Account:</h5>
+					<p id="connected_account">None</p>
+					
+				</div>
+			</div>
+		</div>
 
 	</div>
 
